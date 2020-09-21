@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="home" id="components-layout-demo-basic">
+    <header-top></header-top>
+    <section
+      class="connecter sectionbody display_flex justify-content_flex-justify"
+    >
+      <main></main>
+      <aside-right></aside-right>
+    </section>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import HeaderTop from "@/components/HeaderTop.vue";
+import AsideRight from "@/components/AsideRight.vue";
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    HeaderTop,
+    AsideRight
+  },
+  data() {
+    return {
+      menu: ["home"]
+    };
   }
 };
 </script>
+<style lang="less" scoped>
+.sectionbody {
+  padding-top: 61px;
+}
+main {
+  width: 700px;
+  height: 700px;
+  background: #fff;
+}
+</style>
