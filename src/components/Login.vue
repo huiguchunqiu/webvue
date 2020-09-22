@@ -74,8 +74,28 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("rsss", values);
+          const { userName, password } = values;
+          const params = {
+            username: userName,
+            password: password
+          };
+          this.goLogin(params);
         }
       });
+    },
+    goLogin(params) {
+      this.axios
+        .post("/task/login", params)
+        .then(res => {
+          if (res.data.code === 2000) {
+            this.$store.commit("changeLogin", true);
+            this.$store.commit("setUserinfo", res.data.userinfo);
+            this.$emit("onClose");
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };

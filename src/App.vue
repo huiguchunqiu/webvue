@@ -14,6 +14,13 @@
   background: #f6f6f6;
   min-height: 100%;
 }
+ul,
+li,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 .connecter {
   width: 960px;
   margin: 0 auto;
