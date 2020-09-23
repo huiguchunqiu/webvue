@@ -6,8 +6,8 @@
         <span @click="onLogin">登录</span> / <span>注册</span>
       </div>
       <div class="personInfo" v-else>
-        <div class="toux" @click="onShowUser">
-          <i-icon type="user" style="font-size: 24px"></i-icon>
+        <div class="toux" @click.stop="onShowUser">
+          <a-icon type="user" style="font-size: 24px"></a-icon>
         </div>
         <ul class="personlist" v-show="isUserShow">
           <li>个人主页</li>
@@ -31,7 +31,7 @@ export default {
     aMenu: Menu,
     aMenuItem: Menu.Item,
     Login,
-    IIcon: Icon
+    AIcon: Icon
   },
   computed: {
     islogin: function() {
@@ -53,8 +53,10 @@ export default {
       this.visible = true;
     },
     onClose() {
-      console.log("233");
       this.visible = false;
+    },
+    userHide() {
+      this.isUserShow = false;
     },
     getUserInfo(params) {
       this.axios
@@ -88,6 +90,7 @@ export default {
   },
   mounted() {
     this.getUserInfo();
+    this.globalClick(this.userHide);
   }
 };
 </script>
@@ -124,6 +127,7 @@ export default {
   margin: 5px auto;
   border: 1px solid #efefef;
   cursor: pointer;
+  text-align: center;
 
   i {
     margin-top: 5px;

@@ -8,6 +8,13 @@ import { Modal } from "ant-design-vue";
 
 // Vue.componnet(Button.name, Button);
 
+//全局点击事件
+Vue.prototype.globalClick = function(callback) {
+  document.getElementById("app").onclick = function() {
+    callback && callback();
+  };
+};
+
 Vue.config.productionTip = false;
 Vue.use(Modal);
 Vue.use(VueAxios, axios);

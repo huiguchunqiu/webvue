@@ -48,11 +48,11 @@ module.exports = {
     open: false,
     hotOnly: false,
     proxy: {
-      "/login": {
+      "/task": {
         target: "http://localhost:3000",
         changeOrigin: true,
         pathRewrite: {
-          "^/lukydraw": "/login"
+          "^/task": "/task"
         }
       },
       "/user": {
